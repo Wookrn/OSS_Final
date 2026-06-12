@@ -1,13 +1,8 @@
 from fastapi import FastAPI
 import uvicorn
-from pydantic import BaseModel
 from recommendation import recommendation_router
 
 app = FastAPI()
-
-class UserRequest(BaseModel):
-    category: str
-
 
 @app.get("/")
 async def welcome():

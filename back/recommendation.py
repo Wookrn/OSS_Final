@@ -1,10 +1,7 @@
 from fastapi import APIRouter
-from pydantic import BaseModel
+from model import UserRequest
 
 recommendation_router = APIRouter()
-
-class UserRequest(BaseModel):
-    category: str
 
 @recommendation_router.post("/recommend")
 async def recommend(user_request: UserRequest):
