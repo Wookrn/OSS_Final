@@ -12,7 +12,7 @@ services:
     container_name: streamlit_app
 
     ports:
-      - "8501:8501"
+      - "80:8501"
 
     depends_on:
       - backend
