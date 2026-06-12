@@ -24,7 +24,7 @@ if st.button("추천 받기"):
         }
 
     try:
-        response = requests.post("http://localhost:8000/recommend", json=payload)
+        response = requests.post("http://backend:8000/recommend", json=payload)
 
         if response.status_code == 200:
             result = response.json()
