@@ -4,15 +4,28 @@ from model import UserRequest
 recommendation_router = APIRouter()
 
 @recommendation_router.post("/recommend")
-async def recommend(user_request: UserRequest):
-    if user_request.category == "A":
-        recommendation = "추천A"
-    elif user_request.category == "B":
-        recommendation = "추천B"
+async def recommend(data: UserRequest):
+    if (
+        data.play_style == "혼자" and data.game_type == "경쟁"
+    ):
+        recommendation = "싱글 플레이 RPG"
+    elif (
+        data.play_style == "혼자" and data.game_type == "협력"
+    ):
+        recommendation = "생존 크래프팅 게임"
+    elif (
+        data.play_style == "함께" and data.game_type == "경쟁"
+    ):
+        recommendation = "MOBA, FPS"
+    elif (
+        data.play_style == "함께" and data.game_type == "협력"
+    ):
+        recommendation = "협동 멀티 플레이 게임"
     else:
-        recommendation = "추천C"
+        recommendation = "캐주얼 게임"
 
     return {
-        "category": user_request.category,
+        "play_style": data.play_style,
+        "game_type": data.game_type,
         "recommendation": recommendation
     }
